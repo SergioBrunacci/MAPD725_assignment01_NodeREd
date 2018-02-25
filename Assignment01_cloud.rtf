@@ -1,0 +1,157 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf200
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 [\
+    \{\
+        "id": "ce74be0c.d0cf98",\
+        "type": "tab",\
+        "label": "Flow 1",\
+        "disabled": false,\
+        "info": ""\
+    \},\
+    \{\
+        "id": "eef8bac9.a2279",\
+        "type": "tab",\
+        "label": "Flow 1",\
+        "disabled": false,\
+        "info": ""\
+    \},\
+    \{\
+        "id": "8abcf336.0075a",\
+        "type": "tab",\
+        "label": "Flow 1",\
+        "disabled": false,\
+        "info": ""\
+    \},\
+    \{\
+        "id": "ff4fcc5e.a77e58",\
+        "type": "twitter-credentials",\
+        "z": "",\
+        "screen_name": "@SergioBrunacci"\
+    \},\
+    \{\
+        "id": "bba78775.e4c56",\
+        "type": "twitter in",\
+        "z": "eef8bac9.a2279",\
+        "twitter": "ff4fcc5e.a77e58",\
+        "tags": "#VW, #Volkswagen, #vw, #volkswagen",\
+        "user": "false",\
+        "name": "VW Tweets",\
+        "topic": "tweets",\
+        "inputs": 0,\
+        "x": 80,\
+        "y": 140,\
+        "wires": [\
+            [\
+                "4e4f5dd4.e4861c",\
+                "195e0efd.721f21",\
+                "25c486f2.abdb2a"\
+            ]\
+        ]\
+    \},\
+    \{\
+        "id": "37b73ca8.65c2cc",\
+        "type": "e-mail",\
+        "z": "eef8bac9.a2279",\
+        "server": "smtp.gmail.com",\
+        "port": "465",\
+        "secure": true,\
+        "name": "mapd725@mailinator.com",\
+        "dname": "Bad Tweets VW",\
+        "x": 720,\
+        "y": 140,\
+        "wires": []\
+    \},\
+    \{\
+        "id": "4e4f5dd4.e4861c",\
+        "type": "debug",\
+        "z": "eef8bac9.a2279",\
+        "name": "",\
+        "active": true,\
+        "tosidebar": true,\
+        "console": false,\
+        "tostatus": false,\
+        "complete": "false",\
+        "x": 290,\
+        "y": 40,\
+        "wires": []\
+    \},\
+    \{\
+        "id": "63818949.f53b3",\
+        "type": "function",\
+        "z": "eef8bac9.a2279",\
+        "name": "Bad Tweets",\
+        "func": "if (msg.sentiment < -3) \{\\n    var message = \{\\n           topic : 'Bad Tweets VW',\\n           payload : msg.payload,\\n           sentiment : msg.sentiment.score\\n     \};\\n    return message;\\n\}",\
+        "outputs": 1,\
+        "noerr": 0,\
+        "x": 490,\
+        "y": 140,\
+        "wires": [\
+            [\
+                "5bea6b15.132dcc",\
+                "37b73ca8.65c2cc"\
+            ]\
+        ]\
+    \},\
+    \{\
+        "id": "195e0efd.721f21",\
+        "type": "sentiment",\
+        "z": "eef8bac9.a2279",\
+        "name": "",\
+        "property": "payload",\
+        "x": 280,\
+        "y": 140,\
+        "wires": [\
+            [\
+                "f2c91435.af406",\
+                "63818949.f53b3"\
+            ]\
+        ]\
+    \},\
+    \{\
+        "id": "f2c91435.af406",\
+        "type": "debug",\
+        "z": "eef8bac9.a2279",\
+        "name": "",\
+        "active": true,\
+        "tosidebar": true,\
+        "console": false,\
+        "tostatus": false,\
+        "complete": "true",\
+        "x": 550,\
+        "y": 280,\
+        "wires": []\
+    \},\
+    \{\
+        "id": "5bea6b15.132dcc",\
+        "type": "debug",\
+        "z": "eef8bac9.a2279",\
+        "name": "",\
+        "active": true,\
+        "tosidebar": true,\
+        "console": false,\
+        "tostatus": false,\
+        "complete": "true",\
+        "x": 690,\
+        "y": 40,\
+        "wires": []\
+    \},\
+    \{\
+        "id": "25c486f2.abdb2a",\
+        "type": "cloudant out",\
+        "z": "eef8bac9.a2279",\
+        "name": "VW Tweets Database",\
+        "cloudant": "",\
+        "database": "nodered",\
+        "service": "Cloundant Query-cloudantNoSQLDB",\
+        "payonly": false,\
+        "operation": "insert",\
+        "x": 320,\
+        "y": 280,\
+        "wires": []\
+    \}\
+]}
