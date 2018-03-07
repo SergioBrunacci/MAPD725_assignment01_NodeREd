@@ -85,7 +85,7 @@
         "type": "function",\
         "z": "eef8bac9.a2279",\
         "name": "Bad Tweets",\
-        "func": "if (msg.sentiment.score < -3) \{\\n    var message = \{\\n           topic : 'Bad Tweets VW',\\n           payload : msg.payload,\\n           sentiment : msg.sentiment.score\\n     \};\\n    return message;\\n\}",\
+        "func": "if (msg.sentiment.score < -3) \{\\n    var message = \{\\n           topic : 'Bad Tweets VW',\\n           payload : 'Scored: ' + msg.sentiment.score + '\\\\n' + 'Message: ' + msg.payload\\n     \};\\n    return message;\\n\}",\
         "outputs": 1,\
         "noerr": 0,\
         "x": 490,\
