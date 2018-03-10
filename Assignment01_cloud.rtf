@@ -38,7 +38,7 @@
         "type": "twitter in",\
         "z": "eef8bac9.a2279",\
         "twitter": "ff4fcc5e.a77e58",\
-        "tags": "#VW, #Volkswagen, #vw, #volkswagen",\
+        "tags": "#VW, #Volkswagen, #vw, #volkswagen, #Tiguan",\
         "user": "false",\
         "name": "VW Tweets",\
         "topic": "tweets",\
@@ -48,8 +48,7 @@
         "wires": [\
             [\
                 "4e4f5dd4.e4861c",\
-                "195e0efd.721f21",\
-                "25c486f2.abdb2a"\
+                "195e0efd.721f21"\
             ]\
         ]\
     \},\
@@ -71,7 +70,7 @@
         "type": "debug",\
         "z": "eef8bac9.a2279",\
         "name": "",\
-        "active": false,\
+        "active": true,\
         "tosidebar": true,\
         "console": false,\
         "tostatus": false,\
@@ -85,7 +84,7 @@
         "type": "function",\
         "z": "eef8bac9.a2279",\
         "name": "Bad Tweets",\
-        "func": "if (msg.sentiment.score < -3) \{\\n    var message = \{\\n           topic : 'Bad Tweets VW',\\n           payload : 'Scored: ' + msg.sentiment.score + '\\\\n' + 'Message: ' + msg.payload\\n     \};\\n    return message;\\n\}",\
+        "func": "if (msg.sentiment.score < -3) \{\\n    var message = \{\\n           topic : 'VW bad tweets',\\n           payload : 'Scored: ' + msg.sentiment.score + '\\\\n' + 'Message: ' + msg.payload\\n     \};\\n    return message;\\n\}",\
         "outputs": 1,\
         "noerr": 0,\
         "x": 490,\
@@ -108,7 +107,8 @@
         "wires": [\
             [\
                 "f2c91435.af406",\
-                "63818949.f53b3"\
+                "63818949.f53b3",\
+                "25c486f2.abdb2a"\
             ]\
         ]\
     \},\
@@ -117,7 +117,7 @@
         "type": "debug",\
         "z": "eef8bac9.a2279",\
         "name": "",\
-        "active": false,\
+        "active": true,\
         "tosidebar": true,\
         "console": false,\
         "tostatus": false,\
@@ -150,8 +150,8 @@
         "service": "Cloundant Query-cloudantNoSQLDB",\
         "payonly": false,\
         "operation": "insert",\
-        "x": 320,\
-        "y": 280,\
+        "x": 500,\
+        "y": 360,\
         "wires": []\
     \}\
 ]}
